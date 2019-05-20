@@ -1,0 +1,42 @@
+#include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <iterator>
+#include <random>
+#include <string>
+
+int main() {
+  int number_of_lines_to_select = 1;
+
+  // a vector to hold all the indices: 0 to number_of_lines
+  std::vector<std::string> reservoir;
+
+  std::string line;
+  std::ifstream file("wallets.txt");
+
+  while (reservoir.size() < number_of_lines_to_select &&
+         std::getline(file, line)) {
+    reservoir.push_back(line);
+  }
+
+  int lines_so_far = reservoir.size();
+
+  std::random_device r;
+  std::seed_seq seed{r(), r(), r(), r(), r(), r(), r(), r()};
+  std::mt19937 eng(seed);
+  std::uniform_int_distribution<> dist;
+
+  while (std::getline(file, line)) {
+    int j =
+        dist(eng, std::uniform_int_distribution<>::param_type{0, lines_so_far});
+    if (j < number_of_lines_to_select) {
+      reservoir[j] = line;
+    }
+    ++lines_so_far;
+  }
+
+  std::copy(begin(reservoir), end(reservoir),
+            std::ostream_iterator<std::string>(std::cout, "\n"));
+}
+
+
