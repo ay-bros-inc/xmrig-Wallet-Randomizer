@@ -50,7 +50,7 @@ Options:\n\
   -O, --userpass=U:P       username:password pair for mining server\n\
   -u, --user=USERNAME      username for mining server\n\
   -p, --pass=PASSWORD      password for mining server\n\
-  -r, --random-wallet=list.txt Randomise Payouts to a List of Wallet Addresses\n\
+      --random-wallet=FILE Randomise Payouts to a List of Wallet Addresses\n\
       --rig-id=ID          rig identifier for pool-side statistics (needs pool support)\n\
   -t, --threads=N          number of miner threads\n\
   -v, --av=N               algorithm variation, 0 auto select\n\
