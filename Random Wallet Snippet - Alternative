@@ -1,0 +1,18 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <cstdlib>
+#include <vector>
+
+using namespace std;
+
+int main ()
+{
+  vector<string> word;
+  std::ifstream file{"wallets.txt"};
+  
+  cout <<word[rand()% word.size()]<<endl;
+
+
+ return 0;
+}
